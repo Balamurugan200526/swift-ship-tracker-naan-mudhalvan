@@ -1,0 +1,14 @@
+{
+  "name": "swiftship-tracker",
+  "version": "1.0.0",
+  "description": "SwiftShip Tracker - Full Stack Logistics Application",
+  "scripts": {
+    "install:all": "npm install --prefix server && npm install --prefix client",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "seed": "npm run seed --prefix server",
+    "start": "npm start --prefix server"
+  },
+  "keywords": ["logistics", "parcel-tracker", "react", "express", "mongodb"],
+  "author": "",
+  "license": "ISC"
+}
