@@ -5,11 +5,12 @@ import User from '../models/User';
 export interface AuthRequest extends Request {
   user?: any;
   headers: any;
+  [key: string]: any;
 }
 
 export const authenticate = async (req: AuthRequest, res: Response, next: NextFunction): Promise<void> => {
   try {
-    const authHeader = (req.headers && req.headers.authorization) || (typeof req.header === 'function' ? req.header('authorization') : undefined);
+    const authHeader = req.headers?.authorization || (req as any).headers?.authorization;
     const token = typeof authHeader === 'string' ? authHeader.split(' ')[1] : undefined;
     if (!token) { res.status(401).json({ message: 'No token provided' }); return; }
     const decoded: any = jwt.verify(token, process.env.JWT_SECRET || 'swiftship_secret_key_2024');
